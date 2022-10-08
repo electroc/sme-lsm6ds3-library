@@ -25,7 +25,7 @@
  */
 
 #include "Wire.h"
-#include "LSM6DS3.h"
+#include "SME_LSM6DS3.h"
 #include "LSM6DS3Reg.h"
 
 //Public methods

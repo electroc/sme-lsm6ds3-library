@@ -24,11 +24,11 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
 #include <Arduino.h>
-#include "LSM6DS3.h"
+#include "SME_LSM6DS3.h"
 #include "Wire.h"
 
 void setup() {
-	pinMode(PIN_LED_13,OUTPUT);
+	pinMode(LED_BUILTIN,OUTPUT);
 	Wire.begin();
 	Serial.begin(115200);
 	while(!Serial){};
@@ -71,7 +71,7 @@ void printMenu(){
 	Serial.println("26 - High Performance (Default)");
 	Serial.println("Choose a command");
 	while(Serial.available() == 0){}
-	digitalWrite(PIN_LED_13,HIGH);
+	digitalWrite(LED_BUILTIN,HIGH);
 	String read=Serial.readString();
 	int value=read.toInt();
 	Serial.println("+++++++++++++++++++++++++++++++++++++");
@@ -202,7 +202,7 @@ void printMenu(){
 			Serial.println("Unknown Command");
 	}
 	Serial.println("+++++++++++++++++++++++++++++++++++++");
-	digitalWrite(PIN_LED_13,LOW);
+	digitalWrite(LED_BUILTIN,LOW);
 }
 
 void loop() {

@@ -25,7 +25,7 @@
  */
 
 #include <Arduino.h>
-#include "LSM6DS3.h"
+#include "SME_LSM6DS3.h"
 #include "Wire.h"
 
 void setup() {
@@ -42,17 +42,43 @@ void setup() {
 			Serial.println("Accelerometer Not Powered On");
 		}
 	}
+ 
+	 accelerometer.changeFullScale(XL_FS_2G);   // default most values
+	 //accelerometer.changeFullScale(XL_FS_4G);
+	 //accelerometer.changeFullScale(XL_FS_8G);
+	 //accelerometer.changeFullScale(XL_FS_16G);    // least values
+
+	 //accelerometer.changeOutputDataRate(POWER_12_5_HZ);
+	 //accelerometer.changeOutputDataRate(POWER_26_HZ);
+	 //accelerometer.changeOutputDataRate(POWER_52_HZ);
+	 //accelerometer.changeOutputDataRate(POWER_104_HZ);    //default
+	 //accelerometer.changeOutputDataRate(POWER_208_HZ);
+	 //accelerometer.changeOutputDataRate(POWER_416_HZ);
+	 accelerometer.changeOutputDataRate(POWER_833_HZ);
+	 //accelerometer.changeOutputDataRate(POWER_1_66_KHZ);
+	 //accelerometer.changeOutputDataRate(POWER_3_33_KHZ);
+	 //accelerometer.changeOutputDataRate(POWER_6_66_KHZ);
+
+	 //accelerometer.changeBandwidth(XL_Band_50Hz);
+	 //accelerometer.changeBandwidth(XL_Band_100Hz);
+	 //accelerometer.changeBandwidth(XL_Band_200Hz);
+	 accelerometer.changeBandwidth(XL_Band_400Hz);  // default
+
+	 //accelerometer.changeOperatingMode(XL_HM_Normal);
+	 accelerometer.changeOperatingMode(XL_HM_High_Performance); // default
+ 
 }
 
 void loop() {
-    Serial.println("++++++++++++++++++++++++++++++++++++++++");
-    Serial.println("Accelerometer Values ");
+    //Serial.println("++++++++++++++++++++++++++++++++++++++++");
+    //Serial.println("Accelerometer Values ");
     Serial.print("Raw  X = ");
     Serial.print(accelerometer.getRawXAxis());
     Serial.print(" Y = ");
     Serial.print(accelerometer.getRawYAxis());
     Serial.print(" Z = ");
     Serial.println(accelerometer.getRawZAxis());
+    /*
     Serial.print("X = ");
     Serial.print(accelerometer.getConvertedXAxis(), 2);
     Serial.print("g  Y = ");
@@ -61,6 +87,7 @@ void loop() {
     Serial.print(accelerometer.getConvertedZAxis(), 2);
     Serial.println("g");
     Serial.println("++++++++++++++++++++++++++++++++++++++++");
-    delay(1000);
+     * 
+     */
+    //delay(100);
 }
-
